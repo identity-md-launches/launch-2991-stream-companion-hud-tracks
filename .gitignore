@@ -1,0 +1,16 @@
+# Explicit path budget: generated dependency/cache/scratch paths add 0 bytes.
+# Unanchored directory patterns apply at every nesting level.
+node_modules/
+.npm/
+.vite/
+coverage/
+.playwright-mcp/
+*.tsbuildinfo
+test/scratch/
+# Assignment inputs and machine-managed mount points: 0 submitted bytes.
+/.imd/
+/.cache/
+/.agents/
+/.aws/
+/.codex/
+# dist/ is a required, included deliverable (budget: 1.5 MiB).

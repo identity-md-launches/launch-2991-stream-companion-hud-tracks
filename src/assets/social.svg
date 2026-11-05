@@ -1,0 +1,22 @@
+<svg id="social-card" xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs><pattern id="social-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0v40" fill="none" stroke="#233039" stroke-width="1"/></pattern></defs>
+  <rect width="1200" height="630" fill="#0c1015"/>
+  <rect x="650" y="70" width="500" height="500" fill="url(#social-grid)"/>
+  <rect x="64" y="68" width="50" height="50" rx="13" fill="#66e2c4"/>
+  <g stroke="#10251f" fill="none" stroke-width="2.5"><circle cx="89" cy="91" r="16"/><circle cx="89" cy="91" r="10"/><path d="m81 110 8-5 8 5M78 112h22"/></g>
+  <text x="132" y="105" font-family="Inter,Arial,sans-serif" font-size="36" font-weight="700" letter-spacing="-1"> <tspan fill="#edf2f3">Squeekside</tspan><tspan fill="#66e2c4">.</tspan></text>
+  <text x="64" y="277" font-family="Inter,Arial,sans-serif" font-size="76" font-weight="600" letter-spacing="-3" fill="#edf2f3">At the wheel.</text>
+  <text x="68" y="339" font-family="Inter,Arial,sans-serif" font-size="26" fill="#a0afb8">Your Squeekchain stream companion.</text>
+  <path d="M68 395h480" stroke="#28343d"/>
+  <circle cx="74" cy="436" r="5" fill="#66e2c4"/>
+  <text x="92" y="444" font-family="Inter,Arial,sans-serif" font-size="22" fill="#a0afb8">Wheel activity · Rounds · Sepolia blocks</text>
+  <text x="68" y="558" font-family="Inter,Arial,sans-serif" font-size="20" fill="#92a1ab">Read only. Ready for your stream.</text>
+  <path d="m900 317-90 213h180Z" fill="#15272b" stroke="#3f6665" stroke-width="2"/>
+  <path d="M786 532h228" stroke="#66e2c4" stroke-width="3"/>
+  <circle cx="900" cy="302" r="188" fill="#101b20" stroke="#365650" stroke-width="2"/>
+  <circle cx="900" cy="302" r="174" fill="none" stroke="#66e2c4" stroke-width="4"/>
+  <circle cx="900" cy="302" r="157" fill="none" stroke="#2a4644" stroke-width="2"/>
+  <g fill="none" stroke="#40605b" stroke-width="2"><path d="M900 302V144m0 158 112-112m-112 112h158m-158 0 112 112m-112-112v158m0-158L788 414m112-112H742m158 0L788 190"/></g>
+  <circle cx="900" cy="302" r="16" fill="#1b3031" stroke="#66e2c4" stroke-width="3"/><circle cx="900" cy="302" r="5" fill="#66e2c4"/>
+  <g transform="translate(812 330) scale(1.65)" shape-rendering="crispEdges"><path d="M12 42V24h8V8h18v8h23V8h17v22h9v13h8v32h-8v10H17V74H8V48Z" fill="#1d2526"/><path d="M20 41V26h7V16h9v13h28V16h10v20h7v10h8v23h-9v8H23V65h-8V47Z" fill="#ce9360"/><path d="M27 37h39v8h13v21h-8v11H31V65h-9V46h5Z" fill="#eabb85"/><path d="M35 51h25v9h13v14H31V61h4Z" fill="#f4dbb8"/><path d="M27 21h6v11h-6m40-11h5v11h-5" fill="#c47f70"/><path d="M58 40h6v7h-6m18 1h7v7h-7" fill="#162025"/><path d="M70 57h6v5h-6m-5 5h5v5h-5M22 77h20v7H22m37-7h20v7H59" fill="#a6714d"/></g>
+</svg>
