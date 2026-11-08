@@ -8,6 +8,8 @@ import {
 } from "react";
 import {
   Activity,
+  BarChart3,
+  Palette,
   ArrowDownLeft,
   ArrowUpRight,
   Box,
@@ -45,6 +47,10 @@ import {
 } from "./data";
 import { useNow, usePolling } from "./hooks";
 import WheelScene from "./WheelScene";
+import Dialog from "./Dialog";
+import { AppearanceDialog, useAppearance } from "./Appearance";
+import Guides from "./Guides";
+import Predictions from "./Predictions";
 
 const number = (value: bigint | number | undefined | null) =>
   value == null ? "–" : value.toLocaleString("en-US");
@@ -161,58 +167,6 @@ function OutLink({
     </a>
   );
 }
-function Dialog({
-  open,
-  close,
-  title,
-  children,
-  wide = false,
-}: {
-  open: boolean;
-  close: () => void;
-  title: string;
-  children: ReactNode;
-  wide?: boolean;
-}) {
-  const ref = useRef<HTMLDialogElement>(null);
-  useEffect(() => {
-    const dialog = ref.current;
-    if (open && dialog && !dialog.open) dialog.showModal();
-    else if (!open && dialog?.open) dialog.close();
-  }, [open]);
-  return (
-    <dialog
-      ref={ref}
-      className={wide ? "dialog dialog-wide" : "dialog"}
-      aria-label={title}
-      onCancel={close}
-      onClick={(e) => {
-        if (e.target === e.currentTarget) {
-          const r = e.currentTarget.getBoundingClientRect();
-          if (
-            e.clientX < r.left ||
-            e.clientX > r.right ||
-            e.clientY < r.top ||
-            e.clientY > r.bottom
-          )
-            close();
-        }
-      }}
-    >
-      <div className="dialog-heading">
-        <h2>{title}</h2>
-        <button
-          className="icon-button"
-          aria-label={`Close ${title}`}
-          onClick={close}
-        >
-          <X size={20} />
-        </button>
-      </div>
-      {children}
-    </dialog>
-  );
-}
 
 function SettingsDialog({
   open,
@@ -260,9 +214,10 @@ function SettingsDialog({
       </p>
       <form ref={formRef} onSubmit={submit} noValidate>
         <label className="field" htmlFor="rpc">
-          Sepolia RPC URL
+          <span id="rpc-label">Sepolia RPC URL</span>
           <input
             id="rpc"
+            aria-labelledby="rpc-label"
             name="rpc"
             type="url"
             autoComplete="off"
@@ -280,9 +235,10 @@ function SettingsDialog({
           </span>
         </label>
         <label className="field" htmlFor="api">
-          Squeekchain API base URL
+          <span id="api-label">Squeekchain API base URL</span>
           <input
             id="api"
+            aria-labelledby="api-label"
             name="api"
             type="url"
             autoComplete="off"
@@ -348,7 +304,11 @@ export default function App() {
   const [sourcesOpen, setSourcesOpen] = useState(false);
   const [tab, setTab] = useState<"blocks" | "rounds">("blocks");
   const [notice, setNotice] = useState("");
-  const [transparent, setTransparent] = useState(false);
+  const [appearance, setAppearance, appearanceSaved] = useAppearance();
+  const [appearanceOpen, setAppearanceOpen] = useState(false);
+  const [guideOpen, setGuideOpen] = useState(false);
+  const [predictionsOpen, setPredictionsOpen] = useState(false);
+  const transparent = appearance.transparent;
   const now = useNow();
   const chainLoader = useCallback(
     (signal: AbortSignal) => loadChain(settings, signal),
@@ -414,7 +374,11 @@ export default function App() {
   }, []);
   useEffect(() => {
     document.body.classList.toggle("transparent-page", stream && transparent);
-    return () => document.body.classList.remove("transparent-page");
+    document.documentElement.classList.toggle("transparent-page", stream && transparent);
+    return () => {
+      document.body.classList.remove("transparent-page");
+      document.documentElement.classList.remove("transparent-page");
+    };
   }, [stream, transparent]);
   function saveSettings(next: Settings) {
     setSettings(next);
@@ -459,7 +423,12 @@ export default function App() {
     <div
       className={`app${stream ? " stream-layout" : ""}${transparent && stream ? " transparent-layout" : ""}`}
     >
-      <a className="skip-link" href="#main">
+      <a className="skip-link" href="#main" onClick={(event) => {
+        event.preventDefault();
+        const main = document.getElementById("main");
+        main?.focus();
+        main?.scrollIntoView({ block: "start" });
+      }}>
         Skip to monitor
       </a>
       <header className="site-header">
@@ -487,6 +456,9 @@ export default function App() {
               {new Date(now).toLocaleTimeString("en-GB", { timeZone: "UTC" })}
               <span> UTC</span>
             </span>
+            <button className="icon-button" aria-label="Customize appearance" title="Customize appearance" onClick={() => setAppearanceOpen(true)}>
+              <Palette size={19} aria-hidden="true" />
+            </button>
             <button
               className="icon-button"
               aria-label="Open data settings"
@@ -510,8 +482,12 @@ export default function App() {
       <main id="main" className="main-shell" tabIndex={-1}>
         <div className="page-heading">
           <div>
-            <h1>At the wheel</h1>
-            <p>Live wheel activity, rounds, and Sepolia settlement.</p>
+            <h1>Squeekchain HUD <span className="hud-version">v2.4</span></h1>
+            <p>Wheel activity, rounds, and Sepolia settlement.</p>
+            <div className="hud-shortcuts">
+              <button className="text-button" onClick={() => setPredictionsOpen(true)}><BarChart3 size={16} aria-hidden="true" />Viewer predictions</button>
+              <button className="text-button" onClick={() => setGuideOpen(true)}><CircleHelp size={16} aria-hidden="true" />HUD guide</button>
+            </div>
           </div>
           <div className="page-actions">
             <button
@@ -572,7 +548,7 @@ export default function App() {
               {paused
                 ? "Updates paused"
                 : chainStale
-                  ? "Sepolia read stale"
+                    ? latest ? "Sepolia read stale" : "Sepolia unavailable"
                   : latest
                     ? "Sepolia connected"
                     : chain.loading
@@ -609,7 +585,11 @@ export default function App() {
             <CircleHelp size={18} />
             <p>
               {chain.error ?? chain.data?.coreError}
-              {chain.data && " Displaying the last available read."}
+              {chain.error && chain.data
+                ? " Displaying the last available read."
+                : chain.data?.coreError && latest
+                  ? " Sepolia blocks are still available."
+                  : ""}
             </p>
             <button
               className="text-button"
@@ -1071,7 +1051,7 @@ export default function App() {
               <input
                 type="checkbox"
                 checked={transparent}
-                onChange={(e) => setTransparent(e.target.checked)}
+                onChange={(e) => setAppearance({ ...appearance, transparent: e.target.checked })}
               />
               Transparent page background
             </label>
@@ -1118,6 +1098,9 @@ export default function App() {
         </footer>
       </main>
 
+      <AppearanceDialog open={appearanceOpen} close={() => setAppearanceOpen(false)} appearance={appearance} change={setAppearance} saved={appearanceSaved} />
+      <Guides open={guideOpen} close={() => setGuideOpen(false)} />
+      <Predictions open={predictionsOpen} close={() => setPredictionsOpen(false)} now={now} />
       <SettingsDialog
         open={settingsOpen}
         close={() => setSettingsOpen(false)}

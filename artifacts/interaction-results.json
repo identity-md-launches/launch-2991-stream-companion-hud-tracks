@@ -1,0 +1,196 @@
+{
+  "checkedAt": "2026-11-08T11:29:58.825Z",
+  "source": "Actual dist/ served under a subpath. External network responses are controlled test fixtures, never shipped runtime data.",
+  "checks": [
+    {
+      "name": "390 first screen contains the product, stream action, and prediction action",
+      "passed": true
+    },
+    {
+      "name": "axe: monitor dark",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "pause, one-shot refresh while paused, resume and activity switching",
+      "passed": true
+    },
+    {
+      "name": "axe: guide",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "native guide modal: all topics, focus trap, Escape and focus return",
+      "passed": true
+    },
+    {
+      "name": "axe: Dark Mint appearance",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "axe: Dark Mint monitor",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "axe: Dark Violet appearance",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "axe: Dark Violet monitor",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "axe: Dark Amber appearance",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "axe: Dark Amber monitor",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "axe: Light Mint appearance",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "axe: Light Mint monitor",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "axe: Light Violet appearance",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "axe: Light Violet monitor",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "axe: Light Amber appearance",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "axe: Light Amber monitor",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "all six theme palettes, persistent selections, system mode and reduced motion",
+      "passed": true
+    },
+    {
+      "name": "axe: poll voting",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "axe: poll result",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "poll validation, editable vote, reload, manual close, outcome and JSON download",
+      "passed": true
+    },
+    {
+      "name": "stream route, real clipboard, fullscreen and transparent root canvas",
+      "passed": true
+    },
+    {
+      "name": "axe: data settings",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "data settings validation, saved interval and defaults",
+      "passed": true
+    },
+    {
+      "name": "stale telemetry, source failure and retry recover without fabricated values",
+      "passed": true
+    },
+    {
+      "name": "320, 390, 768, 1000, 1440 layouts and modal reflow",
+      "passed": true
+    },
+    {
+      "name": "blocked storage still permits themes and polls with truthful warning",
+      "passed": true
+    },
+    {
+      "name": "local fonts loaded; no application script errors or failed local resources",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    "mobile-390.png",
+    "keyboard-guide.png",
+    "appearance-light.png",
+    "poll-vote.png",
+    "poll-result.png",
+    "desktop-1440.png"
+  ],
+  "limitations": [
+    "WebKit could not launch: required system libraries are unavailable. No Safari or physical-device claim."
+  ],
+  "firstScreen390": [
+    {
+      "label": "Squeekchain HUD v2.4",
+      "box": {
+        "x": 20,
+        "y": 99,
+        "width": 307,
+        "height": 35
+      }
+    },
+    {
+      "label": "Open stream view",
+      "box": {
+        "x": 132,
+        "y": 234,
+        "width": 238,
+        "height": 44
+      }
+    },
+    {
+      "label": "Viewer predictions",
+      "box": {
+        "x": 20,
+        "y": 170,
+        "width": 146,
+        "height": 44
+      }
+    },
+    {
+      "label": "Wheel illustration",
+      "box": {
+        "x": 41,
+        "y": 590.40625,
+        "width": 156.09375,
+        "height": 120.96875
+      }
+    }
+  ],
+  "expectedSourceConsoleErrors": 2,
+  "fonts": [
+    {
+      "family": "Inter",
+      "status": "loaded"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "status": "loaded"
+    }
+  ],
+  "passed": true
+}

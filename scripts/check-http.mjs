@@ -1,4 +1,4 @@
-import { createServer } from 'node:http'
+import { Agent, createServer, get } from 'node:http'
 import { readFile } from 'node:fs/promises'
 import { resolve, extname } from 'node:path'
 import assert from 'node:assert/strict'
@@ -7,6 +7,22 @@ import assert from 'node:assert/strict'
 const prefix = '/preview/squeekside/'
 const root = resolve('dist')
 const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.png': 'image/png', '.woff2': 'font/woff2' }
+// Keep loopback checks independent of a shell's outbound proxy settings.
+const localAgent = new Agent({ keepAlive: false })
+function fetch(url) {
+  return new Promise((done, reject) => {
+    get(url, { agent: localAgent }, (response) => {
+      const chunks = []
+      response.on('data', (chunk) => chunks.push(chunk))
+      response.on('error', reject)
+      response.on('end', () => done({
+        status: response.statusCode,
+        headers: { get: (name) => response.headers[name] },
+        text: async () => Buffer.concat(chunks).toString('utf8'),
+      }))
+    }).on('error', reject)
+  })
+}
 const server = createServer(async (req, res) => {
   const url = new URL(req.url, 'http://127.0.0.1')
   if (!url.pathname.startsWith(prefix)) { res.writeHead(404).end(); return }
@@ -45,5 +61,6 @@ try {
   assert.equal((await fetch(base + 'missing-route')).status, 404)
   console.log(JSON.stringify({ passed: true, subpath: prefix, assetsFetched: checked, spaFallback: false }, null, 2))
 } finally {
+  localAgent.destroy()
   await new Promise(done => server.close(done))
 }

@@ -26,7 +26,7 @@ assert.equal(png.readUInt32BE(16), 1200, 'Share card width')
 assert.equal(png.readUInt32BE(20), 630, 'Share card height')
 
 const excluded = new Set(['.git', '.github', '.imd', '.cache', '.agents', '.aws', '.codex', '.playwright-mcp', 'node_modules', '.npm', '.vite', 'coverage'])
-let bytes = 0, files = 0, distBytes = 0
+let bytes = 0, files = 0, distBytes = 0, artifactBytes = 0
 async function walk(path) {
   for (const item of await readdir(path, { withFileTypes: true })) {
     if (excluded.has(item.name) || /^\.env(?:\.|$)/.test(item.name) || item.name.endsWith('.tsbuildinfo')) continue
@@ -34,10 +34,11 @@ async function walk(path) {
     if (name === resolve('test/scratch')) continue
     assert.ok(!item.isSymbolicLink(), `Submission must not have symlinks: ${name}`)
     if (item.isDirectory()) await walk(name)
-    else { const size = (await stat(name)).size; bytes += size; files++; if (name.startsWith(root + '/')) distBytes += size }
+    else { const size = (await stat(name)).size; bytes += size; files++; if (name.startsWith(root + '/')) distBytes += size; if (name.startsWith(resolve('artifacts') + '/')) artifactBytes += size }
   }
 }
 await walk(resolve('.'))
 assert.ok(bytes <= 8_388_608, `Submission exceeds 8 MiB: ${bytes}`)
 assert.ok(distBytes <= 1_572_864, `Export exceeds its explicit 1.5 MiB path budget: ${distBytes}`)
-console.log(JSON.stringify({ passed: true, references: references.length, files, bytes, distBytes, budget: 8_388_608 }, null, 2))
+assert.ok(artifactBytes <= 1_048_576, `Review artifacts exceed their explicit 1 MiB path budget: ${artifactBytes}`)
+console.log(JSON.stringify({ passed: true, references: references.length, files, bytes, distBytes, artifactBytes, budget: 8_388_608 }, null, 2))

@@ -1,0 +1,146 @@
+{
+  "recordedAt": "2026-11-08T11:35:19.705192+00:00",
+  "method": "Exact repository inputs copied into disposable test/scratch/build with the unchanged lockfile; staged dist deleted before Vite build; complete output copied to root dist.",
+  "buildCommand": "node scripts/build-isolated.mjs --reuse-install",
+  "lockedInstall": {
+    "command": "npm ci --prefix test/scratch/build --cache test/scratch/npm-cache --no-audit --no-fund",
+    "exitCode": 0
+  },
+  "checks": [
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0
+    },
+    {
+      "command": "npm test",
+      "exitCode": 0,
+      "passed": 19,
+      "failed": 0
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "tool": "Vite 7.3.7"
+    },
+    {
+      "command": "npm run check:export",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run check:http",
+      "exitCode": 0,
+      "assetsFetchedAtSubpath": 7
+    },
+    {
+      "command": "PLAYWRIGHT_BROWSERS_PATH=test/scratch/playwright-browsers node scripts/check-browser.mjs",
+      "exitCode": 0,
+      "checksPassed": 28,
+      "axeScans": 17
+    },
+    {
+      "command": "IMD_PLAYWRIGHT=test/scratch/tools/node_modules/playwright/index.mjs PLAYWRIGHT_BROWSERS_PATH=test/scratch/playwright-browsers node .imd/reads/skills/design-critic/scripts/taste.mjs --out test/scratch/taste",
+      "exitCode": 0,
+      "checksPassed": 16
+    }
+  ],
+  "warnings": [
+    "Two non-fatal Rollup annotation warnings in the locked Zod dependency."
+  ],
+  "budgets": {
+    "submissionBytes": 8388608,
+    "distBytes": 1572864,
+    "reviewArtifactsBytes": 1048576,
+    "dependencyOrCacheBytesSubmitted": 0
+  },
+  "sourceSha256": {
+    "package.json": "359237d76fc94704affe7485df65bc8d2867bb032191688dfd3e5d56ec6f2688",
+    "package-lock.json": "45732cfd7f0aab563d91ac91815c0de939e20de6ef3b9d5ba8f1f3922c63cbc6",
+    "vite.config.ts": "029224ae21401aff75fd472159fa2f34b9304d1a2e0aeedb47f201d2f11fa429",
+    "tsconfig.json": "55847b1d5d270566abb56e6998955a218fa07c5ac86df68183e3327347ee7064",
+    "index.html": "7e4ed2e367fffcdf1421a3d225b4f8e1f76945d5e831de75a7d184e8cb417bd0",
+    "src/App.tsx": "a18b8817e3f9d76fde95dc6ac80edb2f51f75db30af05868b5d8f416013af184",
+    "src/Appearance.tsx": "3de44b2cfd5f87ad9e9b1534cb8d2ba8c6ed0252775e3ae6304fd3a6c88a8192",
+    "src/Dialog.tsx": "322c2fdeaa27dbf7362067770131214511b42b7ab8845d753159ca22590e8164",
+    "src/Guides.tsx": "bd878d874285108fb73ecb9c61e61a6cc3d328f46cf86d4aa517636003ca7456",
+    "src/Predictions.tsx": "41a19fb4f7cf939e26bd917b8887a1889c4b6c9e174914b99853da140f467681",
+    "src/WheelScene.tsx": "5bed5f5694dd98511e3fdf6f6bb4d8cb24bebb1f507c6034418ab12c73266f43",
+    "src/assets/social.svg": "c78f72355f8bc25dd18d21410e1e0fa60ff4eab272b8776638c74458f7dfc3cf",
+    "src/browserState.ts": "cbfda48abb56e0363bca5cdd198a2617852f1f8c05179f2b4b8bf5d47ef67ea5",
+    "src/data.ts": "4aef71e6a921ad541d5fffc3ab5804e7bfe2558a61347117157bdd63a5890923",
+    "src/features.css": "c90e245147410fcebd490d9bd9eccd0413707c94e55ff963e25719252d1a8cb8",
+    "src/hooks.ts": "cf68fe1a3ec37598c424c3f679004a2fd4d24a684176170dbbf06e94e662cd21",
+    "src/main.tsx": "ea8c84e5958947f9f0ca1ee2a473485342a11df80992db3ba10fcc8551f7f5d8",
+    "src/predictions.ts": "df3ed8e5e74cd524ecf0bbf78a88c200cc83994420ea27ad439cd8da4dea8510",
+    "src/styles.css": "dc541dac7c576b004736f5d419c1918592dc2ced605fef4154ba2355c075664e",
+    "public/favicon.svg": "354b79eb8c85fa34fb598ba032ca5084ecd5580058d34dcf958b25f5c03ace5d",
+    "public/fonts/inter-latin.woff2": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+    "public/fonts/plex-mono-latin.woff2": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7",
+    "public/licenses/Design-guidance.txt": "97042f2887a04fc6c26967568cee2a17b3229d0f7e5e3c0b0ac877bef6932c39",
+    "public/licenses/IBM-Plex-Mono-OFL.txt": "7e6b2818edbd8f6a01ae80641cc8f16a51080d08fb4e532be3a0b6f74adb07da",
+    "public/licenses/Inter-OFL.txt": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57",
+    "public/licenses/Lucide-ISC.txt": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
+    "public/licenses/React-MIT.txt": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "public/licenses/Viem-MIT.txt": "091d17ae5f625ffeb381e7109daaf6c492dd32502d612d8ecd24e2ddf6d16b74",
+    "public/licenses/Zod-MIT.txt": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8",
+    "public/social.png": "dd2ef6e6ce31dafbe9f4723b0fcb295d722b0b7e3b81eafb97da44ba731c8416"
+  },
+  "export": {
+    "dist/assets/index-Bykop9w9.css": {
+      "bytes": 33998,
+      "sha256": "436d6bf1916ec684f963c2d1cd5e2ba13ab9a413f6c20fcaf12b80e39915bd3e"
+    },
+    "dist/assets/index-CkZC7nGI.js": {
+      "bytes": 418564,
+      "sha256": "3dce6923a8651d57eebaba1fe20b9cc0490c215b5eb3048086e95f2ee61e1f9f"
+    },
+    "dist/favicon.svg": {
+      "bytes": 355,
+      "sha256": "354b79eb8c85fa34fb598ba032ca5084ecd5580058d34dcf958b25f5c03ace5d"
+    },
+    "dist/fonts/inter-latin.woff2": {
+      "bytes": 48256,
+      "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
+    },
+    "dist/fonts/plex-mono-latin.woff2": {
+      "bytes": 14708,
+      "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+    },
+    "dist/index.html": {
+      "bytes": 1307,
+      "sha256": "c85b28782a1a1ce4e92e6341851b222d0bd55a6b3e5862fd1c6dea3f43382458"
+    },
+    "dist/licenses/Design-guidance.txt": {
+      "bytes": 11964,
+      "sha256": "97042f2887a04fc6c26967568cee2a17b3229d0f7e5e3c0b0ac877bef6932c39"
+    },
+    "dist/licenses/IBM-Plex-Mono-OFL.txt": {
+      "bytes": 4456,
+      "sha256": "7e6b2818edbd8f6a01ae80641cc8f16a51080d08fb4e532be3a0b6f74adb07da"
+    },
+    "dist/licenses/Inter-OFL.txt": {
+      "bytes": 4377,
+      "sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
+    },
+    "dist/licenses/Lucide-ISC.txt": {
+      "bytes": 3208,
+      "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57"
+    },
+    "dist/licenses/React-MIT.txt": {
+      "bytes": 1088,
+      "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+    },
+    "dist/licenses/Viem-MIT.txt": {
+      "bytes": 1074,
+      "sha256": "091d17ae5f625ffeb381e7109daaf6c492dd32502d612d8ecd24e2ddf6d16b74"
+    },
+    "dist/licenses/Zod-MIT.txt": {
+      "bytes": 1072,
+      "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+    },
+    "dist/social.png": {
+      "bytes": 72845,
+      "sha256": "dd2ef6e6ce31dafbe9f4723b0fcb295d722b0b7e3b81eafb97da44ba731c8416"
+    }
+  },
+  "productionDeploy": "Not performed by the worker. Root dist is the managed-publication deliverable."
+}

@@ -593,12 +593,14 @@ select {
 }
 .wheel-stats {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 4.5rem), 1fr));
   border-block-start: 1px solid var(--border);
   padding: 22px 24px;
   gap: 20px;
 }
 .wheel-stats > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
   padding-inline-end: 16px;
 }
 .wheel-stats > div + div {
@@ -1589,7 +1591,7 @@ p.field-hint {
   .wheel-stats strong {
     font-size: var(--text-lg);
     margin-block-start: 3px;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
   }
   .wheel-stats strong > span {
     font-size: var(--text-xs);

@@ -1,0 +1,136 @@
+{
+  "checkedAt": "2026-11-08T11:21:12.274Z",
+  "fixtures": false,
+  "chain": {
+    "success": true,
+    "blocks": [
+      {
+        "number": "12090279",
+        "hash": "0x38c9fa207f6fa95b8555941642ffa09605f56a0cd20644044d754997c1b6c461",
+        "parentHash": "0xb3aa114bd71e07c0053227db61535074b47941e2f7c16354f4cfdb164a34de9b",
+        "timestamp": 1794136860,
+        "transactions": 103,
+        "gasUsed": "60982777",
+        "gasLimit": "199804498",
+        "baseFee": "18"
+      },
+      {
+        "number": "12090278",
+        "hash": "0xb3aa114bd71e07c0053227db61535074b47941e2f7c16354f4cfdb164a34de9b",
+        "parentHash": "0xca8c82564443c43fa332c62ef77148b8e273ab2f61c7326edf47a4bc5d8356ae",
+        "timestamp": 1794136848,
+        "transactions": 104,
+        "gasUsed": "68877646",
+        "gasLimit": "199999809",
+        "baseFee": "18"
+      },
+      {
+        "number": "12090277",
+        "hash": "0xca8c82564443c43fa332c62ef77148b8e273ab2f61c7326edf47a4bc5d8356ae",
+        "parentHash": "0x2e7419a16ee847efab79b6688b3d6e7f6f8a1bc2ba41d9be5aed6c2affb00dd8",
+        "timestamp": 1794136836,
+        "transactions": 132,
+        "gasUsed": "63487970",
+        "gasLimit": "199804689",
+        "baseFee": "18"
+      },
+      {
+        "number": "12090276",
+        "hash": "0x2e7419a16ee847efab79b6688b3d6e7f6f8a1bc2ba41d9be5aed6c2affb00dd8",
+        "parentHash": "0xead5638556f0279f838727f1b51272bdd9fcee139e5ecef04845e6710a736bf0",
+        "timestamp": 1794136824,
+        "transactions": 110,
+        "gasUsed": "63582517",
+        "gasLimit": "200000000",
+        "baseFee": "18"
+      },
+      {
+        "number": "12090275",
+        "hash": "0xead5638556f0279f838727f1b51272bdd9fcee139e5ecef04845e6710a736bf0",
+        "parentHash": "0x2226ea3f425b335b201088d4345394f3a18e30db2645a6eccabbc4ccf6b3c8f9",
+        "timestamp": 1794136812,
+        "transactions": 130,
+        "gasUsed": "63001759",
+        "gasLimit": "200000000",
+        "baseFee": "18"
+      },
+      {
+        "number": "12090274",
+        "hash": "0x2226ea3f425b335b201088d4345394f3a18e30db2645a6eccabbc4ccf6b3c8f9",
+        "parentHash": "0x0cbdf1393aeeca71868c08e12750a9f1edcddb3f2a89446630a1450518661f84",
+        "timestamp": 1794136800,
+        "transactions": 101,
+        "gasUsed": "50394816",
+        "gasLimit": "200000000",
+        "baseFee": "19"
+      }
+    ],
+    "core": {
+      "state": {
+        "settledThroughRound": "1973",
+        "cumulativeWork": "148986",
+        "cumulativeBlockUnits": "13095604188187",
+        "blockHeight": "13095",
+        "blockProgress": "604188187",
+        "workPerThousandBlocks": 11266,
+        "authorizationNonce": "1657",
+        "paused": false
+      },
+      "config": {
+        "streamId": "0xa0186b1a24b217f12f56c8574b492e286d00cd94bb5546cba45b048b19c60e44",
+        "genesisTimestamp": "1791847800",
+        "roundDuration": "600",
+        "maxWorkPerRound": "10000",
+        "maxRoundsPerBatch": 16,
+        "guardian": "0x0E1B21ED2fc5fc48E221D3E863f09589Cb490e73",
+        "reporter": "0xB317AB7Cc24fD5d94EA120B3b189bc6527a7d0Aa",
+        "initialWorkPerThousandBlocks": 10875,
+        "targetBlocksPerActiveRound": "40",
+        "difficultySmoothingRounds": "30",
+        "blockUnitsPerBlock": "1000000000"
+      },
+      "atBlock": "12090267",
+      "atHash": "0x907fa5d19cdd4ef4711ae24d558ede581a5712e9915e0ef35d4058092dc5ae99",
+      "rounds": [
+        {
+          "round": "1973",
+          "work": "0",
+          "units": "0"
+        },
+        {
+          "round": "1972",
+          "work": "0",
+          "units": "0"
+        },
+        {
+          "round": "1971",
+          "work": "0",
+          "units": "0"
+        },
+        {
+          "round": "1970",
+          "work": "0",
+          "units": "0"
+        },
+        {
+          "round": "1969",
+          "work": "0",
+          "units": "0"
+        },
+        {
+          "round": "1968",
+          "work": "0",
+          "units": "0"
+        }
+      ],
+      "historyError": null
+    },
+    "coreError": null,
+    "blocksError": null,
+    "fetchedAt": 1794136872769
+  },
+  "telemetry": {
+    "success": false,
+    "message": "The telemetry API uses a different SqueekCore deployment. See Data sources."
+  }
+}

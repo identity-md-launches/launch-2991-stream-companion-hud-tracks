@@ -14,3 +14,10 @@ test/scratch/
 /.aws/
 /.codex/
 # dist/ is a required, included deliverable (budget: 1.5 MiB).
+# Explicit path budget: artifacts/ review records and selected screenshots <= 1 MiB.
+# Include these deliverables even when global ignores exclude artifacts.
+!/artifacts/
+!/artifacts/*.md
+!/artifacts/*.json
+!/artifacts/screenshots/
+!/artifacts/screenshots/*.png

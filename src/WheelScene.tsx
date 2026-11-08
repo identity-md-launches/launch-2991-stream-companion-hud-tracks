@@ -7,28 +7,28 @@ export default function WheelScene({ spinning }: { spinning: boolean }) {
     >
       <defs>
         <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
-          <path d="M24 0H0v24" fill="none" stroke="#243139" strokeWidth="0.5" />
+          <path d="M24 0H0v24" fill="none" stroke="var(--border)" strokeWidth="0.5" />
         </pattern>
       </defs>
       <rect width="400" height="310" fill="url(#grid)" />
       <path
         d="M25 48h24m-12-12v24M351 48h24m-12-12v24M25 272h24m-12-12v24M351 272h24m-12-12v24"
-        stroke="#3e5458"
+        stroke="var(--border-strong)"
         fill="none"
       />
       <path
         d="m200 157-61 128h122Z"
-        fill="#15272b"
-        stroke="#3f6665"
+        fill="var(--bg-selected)"
+        stroke="var(--border-strong)"
         strokeWidth="1.5"
       />
-      <path d="M125 286h150" stroke="#66e2c4" strokeWidth="2" />
+      <path d="M125 286h150" stroke="var(--accent)" strokeWidth="2" />
       <circle
         cx="200"
         cy="146"
         r="119"
-        fill="#101b20"
-        stroke="#365650"
+        fill="var(--bg-inset)"
+        stroke="var(--border-strong)"
         strokeWidth="1.5"
       />
       <circle
@@ -36,7 +36,7 @@ export default function WheelScene({ spinning }: { spinning: boolean }) {
         cy="146"
         r="110"
         fill="none"
-        stroke="#66e2c4"
+        stroke="var(--accent)"
         strokeWidth="2.5"
       />
       <circle
@@ -44,10 +44,10 @@ export default function WheelScene({ spinning }: { spinning: boolean }) {
         cy="146"
         r="99"
         fill="none"
-        stroke="#2a4644"
+        stroke="var(--border)"
         strokeWidth="1"
       />
-      <g className="wheel-spokes" stroke="#40605b" strokeWidth="1.2">
+      <g className="wheel-spokes" stroke="var(--border-strong)" strokeWidth="1.2">
         {Array.from({ length: 16 }, (_, i) => (
           <path
             key={i}
@@ -61,11 +61,11 @@ export default function WheelScene({ spinning }: { spinning: boolean }) {
         cx="200"
         cy="146"
         r="11"
-        fill="#1b3031"
-        stroke="#66e2c4"
+        fill="var(--bg-selected)"
+        stroke="var(--accent)"
         strokeWidth="2"
       />
-      <circle cx="200" cy="146" r="3" fill="#66e2c4" />
+      <circle cx="200" cy="146" r="3" fill="var(--accent)" />
       <g transform="translate(145 161)" shapeRendering="crispEdges">
         <path
           d="M12 42V24h8V8h18v8h23V8h17v22h9v13h8v32h-8v10H17V74H8V48Z"
@@ -88,10 +88,10 @@ export default function WheelScene({ spinning }: { spinning: boolean }) {
       </g>
       <path
         d="M322 145h31m-4-4 4 4-4 4M47 145h30"
-        stroke="#4c7771"
+        stroke="var(--border-strong)"
         fill="none"
       />
-      <circle cx="357" cy="145" r="3" fill="#66e2c4" />
+      <circle cx="357" cy="145" r="3" fill="var(--accent)" />
     </svg>
   );
 }
